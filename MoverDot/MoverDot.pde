@@ -20,11 +20,9 @@ void draw() {
 class Mover {
   int x, y;
   Mover() {
-    if (x==0) {
+    if (x==0) {//initialize member var
       y = (int)(Math.random()*300)+1;
     }
-
-    //initialize member var
   }
   void move() {
     x++;
