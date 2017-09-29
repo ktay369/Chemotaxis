@@ -1,0 +1,87 @@
+Bacteria [] colony;
+Crack [] ouch;
+void setup()   
+{     
+  size(500, 500);
+  colony = new Bacteria[10];
+  for(int i = 0; i < colony.length; i++)
+  {
+    colony[i] = new Bacteria();
+  }
+  ouch = new Crack[6];
+  for(int j = 0; j < ouch.length; j++)
+  {
+    ouch[j] = new Crack();
+  }
+}   
+void draw()   
+{    
+  background(255);
+ for (int i = 0; i < colony.length; i++){
+ colony[i].move();
+  colony[i].show();
+ }
+}  
+class Bacteria  
+{     
+  int x, y;
+  Bacteria()
+  {
+    x = 250;
+   y = 250;
+  }
+
+  void move() 
+  {
+    if (mouseX<x)
+      x = x+(int)(Math.random()*2)+1;
+      else if(mouseX ==x)
+      x+=0;
+      else
+      x = x+(int)(Math.random()*2)-2;
+    
+    if(mouseY<y)
+      y = y+(int)(Math.random()*2)+1;
+      else if(mouseY == y)
+      y+=0;
+      else
+      y = y+(int)(Math.random()*2)-2;
+      
+      
+    
+    //fill(0);
+    //ellipse(myX, myY, 10, 10);
+  }
+  void show() {
+    fill(0);
+    ellipse(x, y, 10, 10);
+  }
+}
+class Crack
+{int startX, startY, endX, endY;
+ Crack()
+ {
+   startX = mouseX;
+   startY = mouseY;
+ }
+ 
+ void make(){
+   stroke(0);
+while(startX+endX<=500&&startX+endX>=0&&startY+endY<=500&&startY+endY>=0){
+        endX = (int)(Math.random()*18)-9;
+        endY = (int)(Math.random()*18)-9;
+line(startX, startY, startX+endX, startY+endY);
+        startX = startX+endX;
+        startY = startY+endY;}
+ }
+}
+void mousePressed(){
+  if(get(mouseX, mouseY) == color(0, 0, 0))
+  fill(255, 0, 0);
+  textSize(50);
+  text("SQUISH!",200, 250); 
+  for(int j = 0; j < ouch.length; j++)
+  {
+    ouch[j].make();
+  }
+}
