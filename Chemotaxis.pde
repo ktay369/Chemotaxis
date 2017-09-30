@@ -11,6 +11,8 @@ void setup()
 void draw()   
 {    
   background(color(0));
+  fill(250);
+  ellipse(250, 250, 500, 500);
   for (int i = 0; i < colony.length; i++) {
     colony[i].move();
     colony[i].show();
@@ -78,11 +80,11 @@ class Bacteria
   void show() {
     if((x-250)*(x-250)+(y-250)*(y-250)<62500){
     fill((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
-    ellipse(x, y, 20, 20);
+    ellipse(x, y, 30, 30);
     }
     else{
       fill(0);
-    ellipse(x, y, 20, 20);
+    ellipse(x, y, 30, 30);
     }
   }
 }
